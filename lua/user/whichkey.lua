@@ -5,8 +5,8 @@ end
 
 local setup = {
   plugins = {
-    marks = true, -- shows a list of your marks on ' and `
-    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+    marks = false, -- shows a list of your marks on ' and `
+    registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     spelling = {
       enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
       suggestions = 20, -- how many suggestions should be shown in the list?
@@ -130,16 +130,17 @@ local mappings = {
 
   l = {
     name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    a = {"<cmd> Telescope lsp_code_actions<cr>", "Code Action"},
     d = {
       "<cmd>Telescope lsp_document_diagnostics<cr>",
       "Document Diagnostics",
     },
+    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     w = {
       "<cmd>Telescope lsp_workspace_diagnostics<cr>",
       "Workspace Diagnostics",
     },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {

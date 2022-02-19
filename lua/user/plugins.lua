@@ -60,7 +60,7 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
 
   -- cmp plugins
@@ -83,16 +83,22 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use "gbrlsnchs/telescope-lsp-handlers.nvim" -- replaces lua modals for code actions, formatting, diagnostics
 
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
+    commit = '668de0951a36ef17016074f1120b6aacbe6c4515',
     run = ":TSUpdate",
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  use "npxbr/glow.nvim"
+
+  -- tag surrounding
+  use "tpope/vim-surround"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -1,3 +1,6 @@
+
+local root_dir = require('user.lsp.handlers').root_dir({prioritizeManifest = false})
+
 return {
 	settings = {
 

@@ -1,5 +1,28 @@
 local M = {}
 
+local util = require('lspconfig').util
+
+M.root_dir = function(opts)
+    opts = opts or {prioritizeManifest = false}
+
+    return function(filename)
+        local manifest
+
+        if string.match(filename, '%.go$') then
+            manifest = util.root_pattern('go.mod')(filename)
+        elseif string.match(filename, "package.json") then
+            manifest = util.find_package_json_ancestor(filename)
+        end
+
+        if opts.prioritizeManifest and manifest then
+            return manifest
+        end
+
+        return util.find_git_ancestor(filename) or manifest or
+                   util.path.dirname(filename)
+    end
+end
+
 -- TODO: backfill this to template
 M.setup = function()
   local signs = {
@@ -42,6 +65,7 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
+
 end
 
 local function lsp_highlight_document(client)
