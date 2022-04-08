@@ -13,9 +13,9 @@ local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
 	debug = true,
-  root_dir = root_dir,
+        root_dir = root_dir,
 	sources = {
-          -- formatting.prettier,
+          formatting.prettier,
           formatting.eslint,
           diagnostics.eslint,
           code_actions.eslint,
