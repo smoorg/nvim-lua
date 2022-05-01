@@ -3,7 +3,7 @@ if not null_ls_status_ok then
 	return
 end
 
-local root_dir = require('user.lsp.handlers').root_dir({prioritizeManifest = true})
+local root_dir = require('user.lsp.handlers').root_dir({})
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
@@ -15,9 +15,9 @@ null_ls.setup({
 	debug = true,
         root_dir = root_dir,
 	sources = {
-          formatting.prettier,
-          formatting.eslint,
-          diagnostics.eslint,
-          code_actions.eslint,
+          -- formatting.prettier,
+          -- formatting.eslint,
+          -- diagnostics.eslint,
+          -- code_actions.eslint,
 	},
 })

@@ -1,12 +1,11 @@
-local configs = require'lspconfig/configs'
+local configs = require 'lspconfig/configs'
+local root_dir = require('user.lsp.handlers').root_dir({})
 
 configs.emmet_ls = {
   default_config = {
     cmd = {'emmet-ls', '--stdio'};
     filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    root_dir = function()
-      return vim.loop.cwd()
-    end;
+    root_dir = root_dir,
     settings = {};
   };
 }

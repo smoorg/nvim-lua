@@ -3,7 +3,16 @@ if not eslint_status_ok or eslint_status_ok then
 	return
 end
 
-local root_dir = require('user.lsp.handlers').root_dir({prioritizeManifest = true})
+local eslint_root_files ={
+	".eslintrc.js",
+	".eslintrc.cjs",
+	".eslintrc.yaml",
+	".eslintrc.yml",
+	".eslintrc.json",
+	"package.json",
+}
+
+local root_dir = require('user.lsp.handlers').root_dir(eslint_root_files)
 
 eslint.setup({
   bin = 'eslint', -- or `eslint_d`

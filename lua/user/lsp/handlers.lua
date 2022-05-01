@@ -2,24 +2,11 @@ local M = {}
 
 local util = require('lspconfig').util
 
-M.root_dir = function(opts)
-    opts = opts or {prioritizeManifest = false}
-
+M.root_dir = function(root_files)
     return function(filename)
-        local manifest
-
-        if string.match(filename, '%.go$') then
-            manifest = util.root_pattern('go.mod')(filename)
-        elseif string.match(filename, "package.json") then
-            manifest = util.find_package_json_ancestor(filename)
-        end
-
-        if opts.prioritizeManifest and manifest then
-            return manifest
-        end
-
-        return util.find_git_ancestor(filename) or manifest or
-                   util.path.dirname(filename)
+    	return util.root_pattern(unpack(root_files))(filename)
+				or util.find_git_ancestor(filename)
+			 	or util.path.dirname(filename)
     end
 end
 
