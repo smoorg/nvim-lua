@@ -130,8 +130,8 @@ local mappings = {
 
   l = {
     name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    -- a = {"<cmd> Telescope lsp_code_actions<cr>", "Code Action"},
+    -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    a = {"<cmd> Telescope lsp_code_actions<cr>", "Code Action"},
     d = {
       name = "Diagnostics",
       -- d = {
@@ -139,8 +139,7 @@ local mappings = {
       --   "Document Diagnostics",
       -- },
       p = {
-        
-        "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
+        "<cmd>lua vim.lsp.diagnostic.show()<CR>",
         "Position Diagnostics",
       },
       j = {

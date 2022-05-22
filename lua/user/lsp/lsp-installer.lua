@@ -31,15 +31,15 @@ lsp_installer.on_server_ready(function(server)
     opts = vim.tbl_deep_extend("force", nullls_opts, opts)
   end
 
-  if server.name == "eslint" then
-    local eslint_opts = require ("user.lsp.settings.eslint")
-    opts = vim.tbl_deep_extend("force", eslint_opts, opts)
-  end
+  -- if server.name == "eslint" then
+  --   local eslint_opts = require ("user.lsp.settings.eslint")
+  --   opts = vim.tbl_deep_extend("force", eslint_opts, opts)
+  -- end
 
-  if server.name == "clangd" then
-    local clangd_opts = require ("user.lsp.settings.clangd")
-    opts = vim.tbl_deep_extend("force", clangd_opts, opts)
-  end
+  -- if server.name == "clangd" then
+  --   local clangd_opts = require ("user.lsp.settings.clangd")
+  --   opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+  -- end
 
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
