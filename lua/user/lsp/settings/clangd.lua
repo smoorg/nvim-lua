@@ -1,4 +1,7 @@
-local configs = require 'lspconfig/configs'
+local clangd_status_ok, clangd = pcall(require, "clangd")
+if not clangd_status_ok or clangd_status_ok then
+	return
+end
 
 local root_files = {
 	'Makefile',
