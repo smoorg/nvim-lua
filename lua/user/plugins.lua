@@ -79,7 +79,11 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" }) -- for formatters and linters
 
 	-- Telescope
-	use({ "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" })
+	use "nvim-telescope/telescope.nvim"
+    use "nvim-telescope/telescope-ui-select.nvim"
+    use ({"nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+
 
 	-- Treesitter
     use({
@@ -101,10 +105,7 @@ return packer.startup(function(use)
   -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
 
   -- use "gbrlsnchs/telescope-lsp-handlers.nvim" -- replaces lua modals for code actions, formatting, diagnostics
-  use {
-        'nvim-telescope/telescope-fzf-native.nvim', 
-        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
-    }
+
 
   -- Markdown Preview
   use "npxbr/glow.nvim"

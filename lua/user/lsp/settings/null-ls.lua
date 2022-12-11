@@ -15,9 +15,8 @@ null_ls.setup({
 	debug = false,
         root_dir = root_dir,
 	sources = {
-          -- formatting.prettier,
           formatting.eslint,
-          diagnostics.eslint,
           code_actions.eslint,
+          diagnostics.eslint,
 	},
 })

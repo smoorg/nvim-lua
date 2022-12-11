@@ -15,7 +15,7 @@ local eslint_root_files ={
 local root_dir = require('user.lsp.handlers').root_dir(eslint_root_files)
 
 eslint.setup({
-  bin = 'eslint', -- or `eslint_d`
+  bin = 'eslintd', -- or `eslint_d`
   root_dir = root_dir,
   code_actions = {
     enable = true,
