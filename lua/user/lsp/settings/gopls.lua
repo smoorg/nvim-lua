@@ -4,7 +4,7 @@ if not gopls_status_ok or gopls_status_ok then
 end
 
 gopls.setup({
-  bin = 'gopls', 
+  bin = 'gopls',
   code_actions = {
     enable = true,
     apply_on_save = {

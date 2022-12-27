@@ -1,7 +1,6 @@
-
 local snip_status_ok, ls = pcall(require, "luasnip")
 if not snip_status_ok then
-  return
+    return
 end
 
 local s = ls.snippet
@@ -13,13 +12,13 @@ local fmta = require("luasnip.extras.fmt").fmta
 require("luasnip/loaders/from_vscode").lazy_load()
 
 ls.snippets = {
-  javascript = {
-    s("cst",
-      fmt("const [] = () => { [] }", { i(1, "name"), i(2, "value") }, { delimiters = "[]", strict = false })
-    )
-  }
+    javascript = {
+        s("cst",
+            fmt("const [] = () => { [] }", { i(1, "name"), i(2, "value") }, { delimiters = "[]", strict = false })
+        )
+    }
 }
 
 
-ls.filetype_extend("typescriptreact", {"typescript", "javascript"})
-ls.filetype_extend("typescript", {"typescript", "javascript"})
+ls.filetype_extend("typescriptreact", { "typescript", "javascript" })
+ls.filetype_extend("typescript", { "typescript", "javascript" })

@@ -1,6 +1,6 @@
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
-	return
+    return
 end
 
 local root_dir = require('user.lsp.handlers').root_dir({})
@@ -12,11 +12,11 @@ local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
-	debug = false,
-        root_dir = root_dir,
-	sources = {
-          formatting.eslint,
-          code_actions.eslint,
-          diagnostics.eslint,
-	},
+    debug = false,
+    root_dir = root_dir,
+    sources = {
+        formatting.eslint,
+        code_actions.eslint,
+        diagnostics.eslint,
+    },
 })
