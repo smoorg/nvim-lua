@@ -105,6 +105,7 @@ local mappings = {
         S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
     },
+    r = { "<cmd>Telescope oldfiles<cr>", "  Recently used files" },
 
     g = {
         name = "Git",
@@ -131,26 +132,25 @@ local mappings = {
 
     l = {
         name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
-        w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-        j = { vim.diagnostic.goto_next, "Next Diagnostic" },
-        k = { vim.diagnostic.goto_prev, "Prev Diagnostic" },
+        a = { vim.lsp.buf.code_action, "Code Action" },
         l = { vim.lsp.codelens.run, "CodeLens Action" },
-        q = { vim.diagnostic.setloclist, "Quickfix" },
         r = { vim.lsp.buf.rename, "Rename" },
-        f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
+        f = { vim.lsp.buf.format, "Format" },
+        q = { vim.diagnostic.setloclist, "Quickfix" },
+        R = { vim.lsp.buf.references, "References" },
+
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-        R = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-        S = {
-            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-            "Workspace Symbols",
-        },
+        S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+
+        d = {
+            j = { vim.diagnostic.goto_next, "Next Diagnostic" },
+            k = { vim.diagnostic.goto_prev, "Prev Diagnostic" },
+            d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
+            w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+        }
     },
     n = {
         name = "Utils",
