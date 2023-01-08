@@ -14,7 +14,7 @@ local root_files = {
 }
 local root_dir = require('user.lsp.handlers').root_dir(root_files)
 
-configs.clangd = {
+clangd.setup = {
   default_config = {
     cmd = { 'clangd',};
     filetypes = { "c", "cpp", "h", "hpp" },

@@ -25,7 +25,7 @@ local setup = {
     },
     -- add operators that will trigger motion and text object completion
     -- to enable all native operators, set the preset / operators plugin above
-    -- operators = { gc = "Comments" },
+    operators = { gc = "Comments" },
     key_labels = {
         -- override the label used to display some keys. It doesn't effect WK in any other way.
         -- For example:
@@ -110,13 +110,13 @@ local mappings = {
     g = {
         name = "Git",
         f = { "<cmd>Telescope git_files<cr>", "Git Files" },
-        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+        j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
+        k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk" },
+        l = { "<cmd>Gitsigns blame_line<cr>", "Blame" },
+        p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
+        r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
+        R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
+        s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
         u = {
             "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
             "Undo Stage Hunk",
