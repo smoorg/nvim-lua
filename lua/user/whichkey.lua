@@ -130,6 +130,35 @@ local mappings = {
         },
     },
 
+    d = {
+        name = "DAP",
+        c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
+        o = { "<cmd>lua require('dap').step_over()<cr>", "Step Over" },
+        i = { "<cmd>lua require('dap').step_into()<cr>", "Step Into" },
+        O = { "<cmd>lua require('dap').step_out()<cr>", "Step Out" },
+        r = { "<cmd>lua require('dap').repl.open()<cr>", "Open" },
+        l = { "<cmd>lua require('dap').run_last()<cr>", "Run Last" },
+        b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+        w = {
+            name = "Widgets",
+            h = { "<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover" },
+            p = { "<cmd>lua require('dap.ui.widgets').preview()<cr>", "Preview" },
+            f = { (
+                function()
+                    local widgets = require('dap.ui.widgets')
+                    widgets.centered_float(widgets.frames)
+                end),
+                "Frames"
+            },
+            s = { (
+                function()
+                    local widgets = require('dap.ui.widgets')
+                    widgets.centered_float(widgets.scopes)
+                end),
+                "Frames"
+            },
+        }
+    },
     l = {
         name = "LSP",
         a = { vim.lsp.buf.code_action, "Code Action" },
@@ -140,7 +169,7 @@ local mappings = {
         R = { vim.lsp.buf.references, "References" },
 
         i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+        I = { "<cmd>Mason<cr>", "Installer Info" },
 
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },

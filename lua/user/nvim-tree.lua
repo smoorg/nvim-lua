@@ -35,6 +35,7 @@ nvim_tree.setup {
     actions = {
         change_dir = {
             enable = false,
+            restrict_above_cdw = true,
         },
     },
     view = {
