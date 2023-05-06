@@ -129,7 +129,6 @@ local mappings = {
             "Diff",
         },
     },
-
     d = {
         name = "DAP",
         c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
@@ -139,6 +138,7 @@ local mappings = {
         r = { "<cmd>lua require('dap').repl.open()<cr>", "Open" },
         l = { "<cmd>lua require('dap').run_last()<cr>", "Run Last" },
         b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+        C = { "<cmd>lua require('dap').clear_breakpoint()<cr>", "Clear Breakpoints" },
         w = {
             name = "Widgets",
             h = { "<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover" },
