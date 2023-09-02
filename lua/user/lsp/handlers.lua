@@ -4,9 +4,11 @@ local M = {}
 M.setup = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignWarn",  text = "" },
+        { name = "DiagnosticSignHint",  text = "" },
+        { name = "DiagnosticSignInfo",  text = "" },
+        { name = 'DapBreakpoint',       text = "B" },
+        { name = 'DapStopped',          text = "=>" }
     }
 
     for _, sign in ipairs(signs) do
@@ -81,11 +83,6 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    -- vim.notify(client.name .. " starting...")
-    -- TODO: refactor this into a method that checks if string in list
-    if client.name == "tsserver" then
-        client.server_capabilities.documentFormattingProvider = false
-    end
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
 end
