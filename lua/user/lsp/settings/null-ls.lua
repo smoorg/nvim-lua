@@ -20,7 +20,7 @@ null_ls.setup({
     -- debug = false,
     root_dir = root_dir,
     sources = {
-        formatting.eslint,
+        --formatting.eslint,
         code_actions.eslint,
         diagnostics.eslint,
     },

@@ -70,25 +70,6 @@ return packer.startup(function(use)
     use("lunarvim/darkplus.nvim")
     use("projekt0n/github-nvim-theme")
 
-    -- cmp plugins
-    --use({ "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" }) -- The completion plugin
-    --use({ "hrsh7th/cmp-buffer", commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323" }) -- buffer completions
-    --use({ "hrsh7th/cmp-path", commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e" }) -- path completions
-    --use({ "saadparwaiz1/cmp_luasnip", commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36" }) -- snippet completions
-    --use({ "hrsh7th/cmp-nvim-lsp", commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8" })
-    --use({ "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" })
-
-    ---- snippets
-    --use({ "L3MON4D3/LuaSnip", commit = "79b2019c68a2ff5ae4d732d50746c901dd45603a" }) --snippet engine
-    --use({ "rafamadriz/friendly-snippets", commit = "d27a83a363e61009278b6598703a763ce9c8e617" }) -- a bunch of snippets to use
-
-    -- LSP
-    --use({ "neovim/nvim-lspconfig" }) -- enable LSP
-    --use({ "williamboman/mason.nvim" })
-    --use({ "williamboman/mason-lspconfig.nvim" })
-    --use({ "williamboman/nvim-lsp-installer" }) -- simple to use language server installer
-    -- use({ "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" }) -- for formatters and linters
-
     -- Telescope
     use "nvim-telescope/telescope.nvim"
     use "nvim-telescope/telescope-ui-select.nvim"
@@ -97,22 +78,27 @@ return packer.startup(function(use)
 
     -- commenting
     use({ "numToStr/Comment.nvim" }) --, commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
-    -- uncommenting jsx/tsx
-    -- use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
 
 
-    -- Treesitter
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        -- commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0",
-        commit = "cc360a9beb1b30d172438f640e2c3450358c4086"
-    })
+    ---- Treesitter
+    --use({
+    --    "nvim-treesitter/nvim-treesitter",
+    --    commit = "cc360a9beb1b30d172438f640e2c3450358c4086"
+    --    --commit = "b401b7423d18c78371c5ff1a5f8d3c14292b2047" -- v0.8.5.2
+    --    --commit = "63260da18bf273c76b8e2ea0db84eb901cab49ce" -- v0.9.1
+    --})
 
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
 
     -- Markdown Preview
-    use "npxbr/glow.nvim"
+    --use "npxbr/glow.nvim"
+    use { "ellisonleao/glow.nvim", config = function() require("glow").setup() end }
+    use {
+        'iamcco/markdown-preview.nvim',
+        run = function() vim.fn["mkdp#util#install"]() end
+    }
+    use 'mracos/mermaid.vim'
 
     -- tag surrounding
     --use({ "kylechui/nvim-surround",
@@ -127,7 +113,7 @@ return packer.startup(function(use)
             { 'neovim/nvim-lspconfig' },
             {
                 'williamboman/mason.nvim',
-                run = function() pcall(vim.cmd, 'MasonUpdate') end
+                run = function() vim.cmd('MasonUpdate') end
             },
             { 'williamboman/mason-lspconfig.nvim' },
 
@@ -142,8 +128,13 @@ return packer.startup(function(use)
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
+
+            { 'sago35/tinygo.vim' }
         }
     }
+
+    -- json schema scrapper
+    use 'b0o/SchemaStore.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -165,7 +165,7 @@ local mappings = {
         l = { vim.lsp.codelens.run, "CodeLens Action" },
         r = { vim.lsp.buf.rename, "Rename" },
         f = { vim.lsp.buf.format, "Format" },
-        q = { vim.diagnostic.setloclist, "Quickfix" },
+        Q = { vim.diagnostic.setloclist, "Quickfix" },
         R = { vim.lsp.buf.references, "References" },
 
         i = { "<cmd>LspInfo<cr>", "Info" },
