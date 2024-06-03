@@ -167,6 +167,7 @@ local mappings = {
         f = { vim.lsp.buf.format, "Format" },
         Q = { vim.diagnostic.setloclist, "Quickfix" },
         R = { vim.lsp.buf.references, "References" },
+        L = { "<cmd>LspRestart<cr>", "Reset" },
 
         i = { "<cmd>LspInfo<cr>", "Info" },
         I = { "<cmd>Mason<cr>", "Installer Info" },
