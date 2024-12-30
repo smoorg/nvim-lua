@@ -1,8 +1,7 @@
-vim.cmd [[
+vim.cmd[[
 try
-  colorscheme github_dark_tritanopia
+  colorscheme github_dark_high_contrast
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
-  set background=dark
 endtry
 ]]

@@ -1,12 +1,5 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-    return
-end
-
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-    return
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 local check_backspace = function()
     local col = vim.fn.col "." - 1
@@ -46,10 +39,10 @@ local kind_icons = {
 cmp.setup {
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body) -- For `luasnip` users.
+            luasnip.lsp_expand(args.body)
         end,
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -91,7 +84,7 @@ cmp.setup {
             "i",
             "s",
         }),
-    },
+    }),
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
@@ -108,10 +101,10 @@ cmp.setup {
         end,
     },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
         { name = "path" },
+        { name = "nvim_lsp" },
+        { name = "buffer", keyword_length = 3},
+        { name = "luasnip", keyword_length = 2 },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,

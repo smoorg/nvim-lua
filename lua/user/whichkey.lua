@@ -1,7 +1,5 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-    return
-end
+local which_key = require("which-key")
+local dap = require('dap')
 
 local setup = {
     plugins = {
@@ -36,7 +34,7 @@ local setup = {
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
         separator = "➜", -- symbol used between a key and it's label
-        group = "+",      -- symbol prepended to a group
+        group = "+", -- symbol prepended to a group
     },
     popup_mappings = {
         scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -94,8 +92,6 @@ local mappings = {
         "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
         "Find files",
     },
-    F = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-    P = { "<cmd>Telescope projects<cr>", "Projects" },
 
     p = {
         name = "Packer",
@@ -105,11 +101,14 @@ local mappings = {
         S = { "<cmd>PackerStatus<cr>", "Status" },
         u = { "<cmd>PackerUpdate<cr>", "Update" },
     },
-    r = { "<cmd>Telescope oldfiles<cr>", "  Recently used files" },
-
+    t = {
+        name = "Telescope",
+        t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+        p = { "<cmd>Telescope projects<cr>", "Projects" },
+        o = { "<cmd>Telescope oldfiles<cr>", "  Recently used files" },
+    },
     g = {
         name = "Git",
-        f = { "<cmd>Telescope git_files<cr>", "Git Files" },
         j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
         k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk" },
         l = { "<cmd>Gitsigns blame_line<cr>", "Blame" },
@@ -117,65 +116,74 @@ local mappings = {
         r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
         R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },
         s = { "<cmd>Gitsigns stage_hunk<cr>", "Stage Hunk" },
+        f = { "<cmd>Telescope git_files<cr>", "Git Files" },
+        c = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+        m = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
         u = {
             "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
             "Undo Stage Hunk",
         },
-        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-        c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
         d = {
             "<cmd>Gitsigns diffthis HEAD<cr>",
             "Diff",
         },
     },
-    --d = {
-    --    name = "DAP",
-    --    c = { require('dap').continue, "Continue" },
-    --    o = { require('dap').step_over, "Step Over" },
-    --    i = { require('dap').step_into, "Step Into" },
-    --    O = { require('dap').step_out, "Step Out" },
-    --    r = { require('dap').repl.open, "Open" },
-    --    l = { require('dap').run_last, "Run Last" },
-    --    b = { require('dap').toggle_breakpoint, "Toggle Breakpoint" },
-    --    C = { require('dap').clear_breakpoint, "Clear Breakpoints" },
-    --    w = {
-    --        name = "Widgets",
-    --        h = { "<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover" },
-    --        p = { "<cmd>lua require('dap.ui.widgets').preview()<cr>", "Preview" },
-    --        f = { (
-    --            function()
-    --                local widgets = require('dap.ui.widgets')
-    --                widgets.centered_float(widgets.frames)
-    --            end),
-    --            "Frames"
-    --        },
-    --        s = { (
-    --            function()
-    --                local widgets = require('dap.ui.widgets')
-    --                widgets.centered_float(widgets.scopes)
-    --            end),
-    --            "Frames"
-    --        },
-    --    }
-    --},
+    d = {
+        name = "DAP",
+        c = { dap.continue, "Continue" },
+        o = { dap.step_over, "Step Over" },
+        i = { dap.step_into, "Step Into" },
+        O = { dap.step_out, "Step Out" },
+        r = { dap.repl.open, "Open" },
+        l = { dap.run_last, "Run Last" },
+        b = { dap.toggle_breakpoint, "Toggle Breakpoint" },
+        C = { dap.clear_breakpoint, "Clear Breakpoints" },
+        w = {
+            name = "Widgets",
+            h = { "<cmd>lua require('dap.ui.widgets').hover()<cr>", "Hover" },
+            p = { "<cmd>lua require('dap.ui.widgets').preview()<cr>", "Preview" },
+            f = { (
+                function()
+                    local widgets = require('dap.ui.widgets')
+                    widgets.centered_float(widgets.frames)
+                end),
+                "Frames"
+            },
+            s = { (
+                function()
+                    local widgets = require('dap.ui.widgets')
+                    widgets.centered_float(widgets.scopes)
+                end),
+                "Frames"
+            },
+        }
+    },
     l = {
         name = "LSP",
+        -- Diagnostics
         a = { vim.lsp.buf.code_action, "Code Action" },
         l = { vim.lsp.codelens.run, "CodeLens Action" },
+        i = { vim.lsp.buf.implementation, "Go to implementation" },
+        d = { vim.lsp.buf.definition, "Go to definition" },
+        y = { vim.lsp.buf.declaration, "Go to declaration" },
+        R = { vim.lsp.buf.references, "References" },
+        k = { vim.lsp.buf.hover, "Signature info" },
+
+        -- Refactor
         r = { vim.lsp.buf.rename, "Rename" },
         f = { vim.lsp.buf.format, "Format" },
         Q = { vim.diagnostic.setloclist, "Quickfix" },
-        R = { vim.lsp.buf.references, "References" },
-        L = { "<cmd>LspRestart<cr>", "Reset" },
 
-        i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>Mason<cr>", "Installer Info" },
+        -- Manage
+        I = { "<cmd>LspInfo<cr>", "Info" },
+        L = { "<cmd>LspRestart<cr>", "Reset" },
+        m = { "<cmd>Mason<cr>", "Installer Info" },
 
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
 
-        d = {
+        g = {
             j = { vim.diagnostic.goto_next, "Next Diagnostic" },
             k = { vim.diagnostic.goto_prev, "Prev Diagnostic" },
             d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
@@ -198,7 +206,7 @@ local mappings = {
         C = { "<cmd>Telescope commands<cr>", "Commands" },
     },
 
-    t = {
+    T = {
         name = "Terminal",
         n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
         u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },

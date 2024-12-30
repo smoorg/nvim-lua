@@ -48,20 +48,30 @@ return packer.startup(function(use)
     use "ryanoasis/vim-devicons"
     use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" })
 
-    use({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" })
-    use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
-    use({ "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" })
-    use({ "akinsho/toggleterm.nvim", commit = "aaeed9e02167c5e8f00f25156895a6fd95403af8" })
-    use({ "ahmedkhalf/project.nvim", commit = "541115e762764bc44d7d3bf501b6e367842d3d4f" })
-    use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
-    use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
-    use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
+    --use({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" })
+    --use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
+    --use({ "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" })
+    --use({ "akinsho/toggleterm.nvim", commit = "aaeed9e02167c5e8f00f25156895a6fd95403af8" })
+    --use({ "ahmedkhalf/project.nvim", commit = "541115e762764bc44d7d3bf501b6e367842d3d4f" })
+    --use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
+    --use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
+    --use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
+    use({ "akinsho/bufferline.nvim" })
+    use({ "moll/vim-bbye" })
+    use({ "nvim-lualine/lualine.nvim" })
+    use({ "akinsho/toggleterm.nvim" })
+    use({ "ahmedkhalf/project.nvim" })
+    use({ "lewis6991/impatient.nvim" })
+    --use({ "lukas-reineke/indent-blankline.nvim"})
+    use({ "goolord/alpha-nvim" })
     use("folke/which-key.nvim")
+    use("rcarriga/nvim-notify")
 
     -- debug
     use("mfussenegger/nvim-dap")
     use { "leoluz/nvim-dap-go", requires = { "mfussenegger/nvim-dap" } }
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    --use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua' -- recommended if need floating window support
 
@@ -83,9 +93,10 @@ return packer.startup(function(use)
     ---- Treesitter
     --use({
     --    "nvim-treesitter/nvim-treesitter",
-    --    commit = "cc360a9beb1b30d172438f640e2c3450358c4086"
-    --    --commit = "b401b7423d18c78371c5ff1a5f8d3c14292b2047" -- v0.8.5.2
-    --    --commit = "63260da18bf273c76b8e2ea0db84eb901cab49ce" -- v0.9.1
+        --commit = "cc360a9beb1b30d172438f640e2c3450358c4086"
+        --commit = "b401b7423d18c78371c5ff1a5f8d3c14292b2047" -- v0.8.5.2
+        --commit = "63260da18bf273c76b8e2ea0db84eb901cab49ce" -- v0.9.1
+        --commit = "f197a15b0d1e8d555263af20add51450e5aaa1f0"
     --})
 
     -- Git
@@ -107,16 +118,8 @@ return packer.startup(function(use)
 
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v4.x',
         requires = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            {
-                'williamboman/mason.nvim',
-                run = function() vim.cmd('MasonUpdate') end
-            },
-            { 'williamboman/mason-lspconfig.nvim' },
-
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-buffer' },
@@ -129,7 +132,13 @@ return packer.startup(function(use)
             { 'L3MON4D3/LuaSnip' },
             { 'rafamadriz/friendly-snippets' },
 
-            { 'sago35/tinygo.vim' }
+            { 'sago35/tinygo.vim' },
+
+            -- References
+            --{ 'VidocqH/lsp-lens.nvim' }
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
         }
     }
 

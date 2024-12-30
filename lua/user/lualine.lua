@@ -1,7 +1,4 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-    return
-end
+local lualine = require("lualine")
 
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
@@ -60,7 +57,7 @@ local progress = function()
 end
 
 local spaces = function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return "spaces: " .. vim.api.nvim_buf_get_option_value("shiftwidth")
 end
 
 lualine.setup({
@@ -76,7 +73,7 @@ lualine.setup({
         lualine_a = { branch, diagnostics },
         lualine_b = { mode },
         lualine_c = {},
-        -- lualine_x = { "encoding", "fileformat", "filetype" },
+        --lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_x = { diff, spaces, "encoding", filetype },
         lualine_y = { location },
         lualine_z = { progress },
