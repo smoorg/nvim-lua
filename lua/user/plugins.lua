@@ -40,7 +40,7 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
     -- Have packer manage itself
-    use({ "wbthomason/packer.nvim", commit = "00ec5adef58c5ff9a07f11f45903b9dbbaa1b422" })
+    use({ "wbthomason/packer.nvim" })
     use({ "nvim-lua/plenary.nvim", commit = "968a4b9afec0c633bc369662e78f8c5db0eba249" }) -- Useful lua functions used by lots of plugins
     use({ "windwp/nvim-autopairs", commit = "fa6876f832ea1b71801c4e481d8feca9a36215ec" }) -- Autopairs, integrates with both cmp and treesitter
     use({ "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" })
@@ -48,21 +48,12 @@ return packer.startup(function(use)
     use "ryanoasis/vim-devicons"
     use({ "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" })
 
-    --use({ "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" })
-    --use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
-    --use({ "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" })
-    --use({ "akinsho/toggleterm.nvim", commit = "aaeed9e02167c5e8f00f25156895a6fd95403af8" })
-    --use({ "ahmedkhalf/project.nvim", commit = "541115e762764bc44d7d3bf501b6e367842d3d4f" })
-    --use({ "lewis6991/impatient.nvim", commit = "969f2c5c90457612c09cf2a13fee1adaa986d350" })
-    --use({ "lukas-reineke/indent-blankline.nvim", commit = "6177a59552e35dfb69e1493fd68194e673dc3ee2" })
-    --use({ "goolord/alpha-nvim", commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94" })
     use({ "akinsho/bufferline.nvim" })
     use({ "moll/vim-bbye" })
     use({ "nvim-lualine/lualine.nvim" })
     use({ "akinsho/toggleterm.nvim" })
     use({ "ahmedkhalf/project.nvim" })
     use({ "lewis6991/impatient.nvim" })
-    --use({ "lukas-reineke/indent-blankline.nvim"})
     use({ "goolord/alpha-nvim" })
     use("folke/which-key.nvim")
     use("rcarriga/nvim-notify")
@@ -70,7 +61,6 @@ return packer.startup(function(use)
     -- debug
     use("mfussenegger/nvim-dap")
     use { "leoluz/nvim-dap-go", requires = { "mfussenegger/nvim-dap" } }
-    --use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua' -- recommended if need floating window support
@@ -89,16 +79,6 @@ return packer.startup(function(use)
     -- commenting
     use({ "numToStr/Comment.nvim" }) --, commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
 
-
-    ---- Treesitter
-    --use({
-    --    "nvim-treesitter/nvim-treesitter",
-        --commit = "cc360a9beb1b30d172438f640e2c3450358c4086"
-        --commit = "b401b7423d18c78371c5ff1a5f8d3c14292b2047" -- v0.8.5.2
-        --commit = "63260da18bf273c76b8e2ea0db84eb901cab49ce" -- v0.9.1
-        --commit = "f197a15b0d1e8d555263af20add51450e5aaa1f0"
-    --})
-
     -- Git
     use({ "lewis6991/gitsigns.nvim" })
 
@@ -109,33 +89,35 @@ return packer.startup(function(use)
         'iamcco/markdown-preview.nvim',
         run = function() vim.fn["mkdp#util#install"]() end
     }
+
+    -- support for mermaid (charts language) autocompletion
     use 'mracos/mermaid.vim'
 
     -- tag surrounding
-    --use({ "kylechui/nvim-surround",
-    --    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    --})
+    use({ "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    })
 
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v4.x',
         requires = {
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
+            'hrsh7th/nvim-cmp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
 
             -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
+            'L3MON4D3/LuaSnip',
+            'rafamadriz/friendly-snippets',
 
-            { 'sago35/tinygo.vim' },
+            'sago35/tinygo.vim',
 
             -- References
-            --{ 'VidocqH/lsp-lens.nvim' }
+            'VidocqH/lsp-lens.nvim',
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",

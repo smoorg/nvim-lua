@@ -48,5 +48,11 @@ mason_lspconfig.setup_handlers({
             symbols         = true,
             useBundler      = true,
         }
+
+        lspconfig["lua_ls"].setup {
+            diagnostics = {
+                globals = { 'vim', 'vim.g' }
+            }
+        }
     end
 })
