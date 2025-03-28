@@ -1,7 +1,5 @@
 local telescope = require("telescope")
 
-local actions = require "telescope.actions"
-
 telescope.setup{
       defaults = {
         -- Default configuration for telescope goes here:
