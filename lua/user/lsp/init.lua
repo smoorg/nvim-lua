@@ -51,3 +51,5 @@ mason_lspconfig.setup_handlers({
         }
     end
 })
+
+require "user.lsp.lua_config"
