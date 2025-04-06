@@ -11,12 +11,13 @@ local fmta = require("luasnip.extras.fmt").fmta
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
-ls.snippets = {
-    javascript = {
-        s("cst",
-            fmt("const [] = () => { [] }", { i(1, "name"), i(2, "value") }, { delimiters = "[]", strict = false })
-        )
-    }
+ls.add_snippets = {
+    s("cst",
+        fmt("const [] = () => { [] }", { i(1, "name"), i(2, "value") }, { delimiters = "[]", strict = false })
+    ),
+    s("ctx",
+        fmt("ctx context.Context", {}, { delimiters = "[]", strict = false })
+    )
 }
 
 
