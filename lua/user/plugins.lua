@@ -74,7 +74,11 @@ return packer.startup(function(use)
     use("projekt0n/github-nvim-theme")
 
     -- Telescope
-    use "nvim-telescope/telescope.nvim"
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
     use "nvim-telescope/telescope-ui-select.nvim"
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
@@ -97,7 +101,8 @@ return packer.startup(function(use)
     use 'mracos/mermaid.vim'
 
     -- tag surrounding
-    use({ "kylechui/nvim-surround",
+    use({
+        "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
     })
 
@@ -129,6 +134,8 @@ return packer.startup(function(use)
 
     -- json schema scrapper
     use 'b0o/SchemaStore.nvim'
+
+    use 'nvim-treesitter/nvim-treesitter'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
