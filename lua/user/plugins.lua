@@ -70,8 +70,11 @@ return packer.startup(function(use)
 
     -- Colorschemes
     use({ "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" })
-    use("lunarvim/darkplus.nvim")
-    use("projekt0n/github-nvim-theme")
+    use "lunarvim/darkplus.nvim"
+    use "projekt0n/github-nvim-theme"
+    use 'UtkarshVerma/molokai.nvim'
+    use { 'metalelf0/jellybeans-nvim', requires = { 'rktjmp/lush.nvim' } }
+    use "neko-night/nvim"
 
     -- Telescope
     use {
