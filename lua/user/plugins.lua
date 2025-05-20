@@ -58,6 +58,9 @@ return packer.startup(function(use)
     use("folke/which-key.nvim")
     use("rcarriga/nvim-notify")
 
+    -- todo list
+    use { 'arnarg/todotxt.nvim', requires = { 'MunifTanjim/nui.nvim' } }
+
     -- debug
     use("mfussenegger/nvim-dap")
     use { "leoluz/nvim-dap-go", requires = { "mfussenegger/nvim-dap" } }
