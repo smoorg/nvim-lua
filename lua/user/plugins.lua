@@ -62,7 +62,7 @@ return packer.startup(function(use)
     use { 'arnarg/todotxt.nvim', requires = { 'MunifTanjim/nui.nvim' } }
 
     -- debug
-    use("mfussenegger/nvim-dap")
+    use "mfussenegger/nvim-dap"
     use { "leoluz/nvim-dap-go", requires = { "mfussenegger/nvim-dap" } }
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
     use 'ray-x/go.nvim'
