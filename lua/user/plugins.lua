@@ -76,9 +76,16 @@ return packer.startup(function(use)
     use { 'metalelf0/jellybeans-nvim', requires = { 'rktjmp/lush.nvim' } }
     use "neko-night/nvim"
 
+    -- mongo db
+    use {
+        'kopecmaciej/vi-mongo.nvim',
+        config = function() require('vi-mongo').setup() end
+    }
+
     -- Telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        --'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        'nvim-telescope/telescope.nvim', branch = 'master',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
