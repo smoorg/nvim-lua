@@ -112,6 +112,7 @@ local mappings = {
         j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
         k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk" },
         l = { "<cmd>Gitsigns blame_line<cr>", "Blame" },
+        L = { "<cmd>Gitsigns blame<cr>", "Blame file" },
         p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
         r = { "<cmd>Gitsigns reset_hunk<cr>", "Reset Hunk" },
         R = { "<cmd>Gitsigns reset_buffer<cr>", "Reset Buffer" },

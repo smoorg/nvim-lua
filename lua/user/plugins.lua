@@ -83,15 +83,15 @@ return packer.startup(function(use)
     }
 
     -- Telescope
-    use {
-        --'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        'nvim-telescope/telescope.nvim', branch = 'master',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-    use "nvim-telescope/telescope-ui-select.nvim"
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+   use {
+       'nvim-telescope/telescope.nvim', tag = '0.1.8',
+ --       'nvim-telescope/telescope.nvim', branch = 'master',
+       -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } },
+	config = function() require("telescope").setup() end
+   }
+   -- use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
 
     -- commenting
     use({ "numToStr/Comment.nvim" }) --, commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" })
