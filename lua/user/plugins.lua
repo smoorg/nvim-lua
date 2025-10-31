@@ -141,6 +141,13 @@ return packer.startup(function(use)
             "neovim/nvim-lspconfig",
         }
     }
+    use {
+        'nvim-flutter/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'stevearc/dressing.nvim', -- optional for vim.ui.select
+        },
+    }
 
     -- json schema scrapper
     use 'b0o/SchemaStore.nvim'
