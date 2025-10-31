@@ -1,4 +1,3 @@
-local lspconfig = require('lspconfig')
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
 
@@ -18,38 +17,27 @@ mason_lspconfig.setup({
     automatic_enable = true
 })
 
---mason_lspconfig.setup({
---    function(server)
---        lspconfig[server].setup {
---            --capabilities = capabilities,
---            on_init = function(bufnr)
---                local opts = { buffer = bufnr }
---                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
---                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
---                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
---                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
---                vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
---                vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
---                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
---                --on_attach = function(bufnr)
---                --    local opts = { buffer = bufnr }
---                --end
---            end,
---        }
---        lspconfig["solargraph"].setup {
---            completion  = true,
---            definitions = true,
---            diagnostics = true,
---            folding     = true,
---            formatting  = true,
---            hover       = true,
---            references  = true,
---            rename      = true,
---            symbols     = true,
---            useBundler  = true,
---        }
---    end
---})
+mason_lspconfig.setup({
+    function(server)
+        vim.lsp.config(server, {
+            --capabilities = capabilities,
+            on_init = function(bufnr)
+                local opts = { buffer = bufnr }
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+                vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+                --on_attach = function(bufnr)
+                --    local opts = { buffer = bufnr }
+                --end
+            end,
+        })
+    end
+})
 
 require "user.lsp.lua_config"
