@@ -8,7 +8,7 @@ telescope.setup{
       },
       pickers = {
         colorscheme = {
-            enable_preview = true
+            enable_preview = false
         },
         -- Default configuration for builtin pickers goes here:
         -- picker_name = {
