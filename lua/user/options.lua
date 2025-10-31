@@ -37,7 +37,7 @@ local options = {
 	tw = 0																	-- number of characters after which vim will add new line automatically, default 80
 }
 
-vim.opt.shortmess:append "c"
+--vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
