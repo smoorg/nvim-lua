@@ -147,6 +147,24 @@ return packer.startup(function(use)
 
     use 'nvim-treesitter/nvim-treesitter'
 
+    -- orgmode
+    use {
+	'nvim-orgmode/orgmode',
+	config = function ()
+        require('orgmode').setup({
+            org_agenda_files = '~/Documents/orgmode/**/*',
+            org_default_notes_file = '~/Documents/orgmode/notes.org',
+        })
+	end
+    }
+    use {
+	'ibhagwan/fzf-lua', requires = { "nvim-tree/nvim-web-devicons" },
+	config = function ()
+	    require('fzf-lua').setup()
+	    require('nvim-web-devicons').setup()
+	end
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
