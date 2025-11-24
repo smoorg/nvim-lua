@@ -174,11 +174,15 @@ local mappings = {
         i = { vim.lsp.buf.implementation, "Go to implementation" },
         d = { vim.lsp.buf.definition, "Go to definition" },
         y = { vim.lsp.buf.declaration, "Go to declaration" },
-        R = { vim.lsp.buf.references, "References" },
         k = { vim.lsp.buf.hover, "Signature info" },
 
+	r = {
+	    f = { vim.lsp.buf.references, "References" },
+	    n = { vim.lsp.buf.rename, "Rename" },
+	    s = { "<cmd>LspRestart<CR>", "Restart LSP"},
+	},
+
         -- Refactor
-        r = { vim.lsp.buf.rename, "Rename" },
         f = { vim.lsp.buf.format, "Format" },
         Q = { vim.diagnostic.setloclist, "Quickfix" },
 
