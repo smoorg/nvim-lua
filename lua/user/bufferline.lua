@@ -57,7 +57,14 @@ bufferline.setup {
         --     return true
         --   end
         -- end,
-        offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
+        offsets = {
+	    {
+		filetype = "NvimTree",
+		text = "",
+		highlight = "Directory",
+		separator = true -- use a "true" to enable the default, or set your own character
+	    }
+	},
         show_buffer_icons = true,
         show_buffer_close_icons = true,
         show_close_icon = true,

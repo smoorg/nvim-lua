@@ -1,8 +1,6 @@
+local lspconfig = vim.lsp.config
 local mason = require('mason')
 local mason_lspconfig = require('mason-lspconfig')
-
---local capabilities = vim.lsp.protocol.make_client_capabilities()
---capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 mason.setup()
 
@@ -20,7 +18,7 @@ mason_lspconfig.setup({
 
 mason_lspconfig.setup({
     function(server)
-        vim.lsp.config(server, {
+        lspconfig[server].settings {
             --capabilities = capabilities,
             on_init = function(bufnr)
                 local opts = { buffer = bufnr }
@@ -32,11 +30,8 @@ mason_lspconfig.setup({
                 vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-                --on_attach = function(bufnr)
-                --    local opts = { buffer = bufnr }
-                --end
             end,
-        })
+        }
     end
 })
 
